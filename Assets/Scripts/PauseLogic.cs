@@ -12,6 +12,9 @@ public class PauseLogic : MonoBehaviour
     [SerializeField] Transform tempPlayerPosition;
     protected bool paused = false;
 
+    public List<GameObject> pauseItems;
+    public List<GameObject> gameItems;
+
     private void Update() 
     {
         if (OVRInput.GetDown(OVRInput.Button.Start))
@@ -28,7 +31,19 @@ public class PauseLogic : MonoBehaviour
             SavePlayerPosition();
         }
         ToggleLocomotionController();
+        TogglePauseGameItems();
         Teleport();
+    }
+
+    private void TogglePauseGameItems()
+    {
+        foreach (GameObject item in pauseItems) {
+            item.SetActive(paused);
+        }
+
+        foreach (GameObject item in gameItems) {
+            item.SetActive(!paused);
+        }
     }
 
     private void Teleport()
