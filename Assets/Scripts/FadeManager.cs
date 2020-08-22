@@ -7,13 +7,6 @@ public class FadeManager : MonoBehaviour
     [SerializeField] OVRScreenFade fader;
     private int levelToLoad;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            FadeToNextLevel();
-        }
-    }
-
     public void FadeToNextLevel()
     {
         FadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
@@ -32,7 +25,7 @@ public class FadeManager : MonoBehaviour
     {
         while (SceneManager.GetActiveScene().buildIndex != levelToLoad)
         {
-            yield return null;
+            yield return new WaitForSecondsRealtime(0.05f);
         }
     }
 }

@@ -68,6 +68,10 @@ public class PauseLogic : MonoBehaviour
 
     private void ToggleLocomotionController()
     {
-        locomotionController.SetActive(!paused);
+        if (!paused)
+        {
+            locomotionController.SetActive(Manager.instance.teleportation);
+        }
+        else locomotionController.SetActive(!paused);
     }
 }
