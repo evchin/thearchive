@@ -27,10 +27,15 @@ public class ArtInfo : MonoBehaviour
     private void UpdateCanvasInstanceText(Painting p, Canvas canvasInstance)
     {
         Transform bg = canvasInstance.transform.Find("BG");
-        bg.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = p.title;
-        bg.transform.Find("Artist").GetComponent<TextMeshProUGUI>().text = p.artist;
-        bg.transform.Find("Year").GetComponent<TextMeshProUGUI>().text = p.year;
-        bg.transform.Find("Movement").GetComponent<TextMeshProUGUI>().text = p.movement;
+        Transform mainPanel = bg.Find("Main Panel");
+        Transform secondPanel = bg.Find("Second Panel");
+
+        mainPanel.Find("Title").GetComponent<TextMeshProUGUI>().text = p.title;
+        mainPanel.Find("Artist").GetComponent<TextMeshProUGUI>().text = p.artist;
+        mainPanel.Find("Year").GetComponent<TextMeshProUGUI>().text = p.year;
+        mainPanel.Find("Movement").GetComponent<TextMeshProUGUI>().text = p.movement;
+        secondPanel.Find("Description").GetComponent<TextMeshProUGUI>().text = p.description;
+        secondPanel.Find("Source").GetComponent<TextMeshProUGUI>().text = p.source;
     }
 
     private static void PositionCanvasInstance(GameObject painting, Canvas canvasInstance)

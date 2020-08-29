@@ -7,6 +7,9 @@ public class Manager : MonoBehaviour
 
     public static Manager instance = null;
     public bool teleportation = true;
+    public bool music = true;
+    public bool noise = false;
+    public bool rain = false;
 
     private void Awake() 
     {
